@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
+[DefaultExecutionOrder(100)]
 public class WheelView : MonoBehaviour {
 
     public SuspensionController SuspensionController {
@@ -17,7 +18,7 @@ public class WheelView : MonoBehaviour {
     private Vector3 _Position;
     private Quaternion _Rotation;
 
-    void Update() {
+    void FixedUpdate() {
         SuspensionController.GetWorldPose(out _Position, out _Rotation);
         this.transform.position = _Position;
         this.transform.rotation = _Rotation * Quaternion.Euler(0, 90, 0);
